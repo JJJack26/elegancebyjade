@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        /* Style for the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #deb8a480;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style for the header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Style for the navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #555;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style for the product list */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Style for each product card */
+        .card {
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 250px;
+        }
+
+        /* Style for product image */
+        .card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        /* Style for product name */
+        .card h2 {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* Style for product price */
+        .card p {
+            margin: 5px 0;
+        }
+
+        /* Style for product links */
+        .card a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Elegance by Jade</h1>
+    </header>
+   
+     <div class="content">
+        <h2>Discover Our Latest Collections</h2>
+       
+    </div>
+    <div class="card-container">
+        {% for product in products %}
+        <div class="card">
+            <img src="{{ product.image.url }}" alt="{{ product.name }} Image">
+            <h2>{{ product.name }}</h2>
+            <p>${{ product.price }}</p>
+            <a href="{% url 'product_detail' product.id %}">View Details</a>
+        </div>
+        {% empty %}
+        <p>No products available.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} Detail</title>
+    <style>
+        /* Style for the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #deb8a480;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style for the header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Style for product details */
+        h1, p {
+            margin: 10px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ product.name }}</h1>
+    </header>
+    <div class="content">
+        <p>Description: {{ product.description }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <img src="{{ product.image.url }}" alt="{{ product.name }} Image">
+        <p>Created at: {{ product.created_at }}</p>
+        <a href="{% url 'product_list' %}">Back to Product List</a>
+    </div>
+</body>
+</html>
